@@ -6,7 +6,11 @@
 
 int     main(int argc, char **argv)
 {
+    t_data data;
+
     if (argc != 2 || ft_strcmp(argv[1] + (ft_strlen(argv[1]) - 2), ".s") != 0)
         ft_error("Not good file");
+    ft_pars(argv, &data);
+    ft_hex(&data);
     return (0);
 }

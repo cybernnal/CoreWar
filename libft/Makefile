@@ -77,6 +77,9 @@ SRC = ft_atoi.c\
 	ft_freetab.c\
 	ft_nbword.c\
 	ft_sqrt.c\
+	get_next_line.c\
+	match.c\
+
 
 SRCDIR = ./
 SRCFILL = $(addprefix $(SRCDIR),$(SRC))

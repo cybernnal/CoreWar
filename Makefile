@@ -14,6 +14,9 @@ NAME = asm
 
 SRC =	src/main.c \
 	    src/error.c \
+	    src/pmalloc.c \
+	    src/pars.c \
+	    src/convert.c \
 
 INC = -I ./include/ -I ./libft/
 

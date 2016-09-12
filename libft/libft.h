@@ -15,6 +15,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "get_next_line.h"
 
 typedef struct		s_list
 {
@@ -86,4 +87,5 @@ int					ft_countchiffres(int nb);
 void				ft_freetab(char **tab);
 size_t				ft_nbword(char const *s, char c);
 double				ft_sqrt(double i);
+int					match(char *s1, char *s2);
 #endif
