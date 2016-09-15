@@ -9,19 +9,25 @@
 #include <unistd.h>
 
 #include "libft.h"
+#include "op.h"
 
 typedef struct      s_line
 {
-    char                   *line;
-    char                   *hex;
-    char                    **inst;
+    char                   line[20];
+    char                   hex[20];
     struct s_line          *next;
 }                           t_line;
 
 typedef struct      s_data
 {
+    unsigned int		magic;
+    char				prog_name[PROG_NAME_LENGTH + 1];
+    unsigned int		prog_size;
+    char				comment[COMMENT_LENGTH + 1];
+    char            cor[CHAMP_MAX_SIZE + 1];
     t_line          *file;
     t_line          *ff;
+    int             i;
 }                   t_data;
 
 void     ft_error(char *str);

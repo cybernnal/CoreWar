@@ -6,7 +6,7 @@
 #    By: tbillard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/23 16:24:51 by tbillard          #+#    #+#              #
-#    Updated: 2016/05/23 16:24:52 by tbillard         ###   ########.fr        #
+#    Updated: 2016/09/12 19:29:00 by tbillard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIB_PATH = libft/
 
 OBJ = $(SRC:.c=.o)
 
-FLAG = -Wall -Wextra -Werror
+FLAG =# -Wall -Wextra -Werror
 
 CC = gcc
 
