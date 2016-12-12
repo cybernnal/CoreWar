@@ -3,53 +3,57 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbillard <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: niborrel <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/05/23 16:24:51 by tbillard          #+#    #+#              #
-#    Updated: 2016/09/12 19:29:00 by tbillard         ###   ########.fr        #
+#    Created: 2016/10/07 21:08:29 by niborrel          #+#    #+#              #
+#    Updated: 2016/10/09 21:51:38 by rbaum            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = asm
 
-SRC =	src/main.c \
-	    src/error.c \
-	    src/pmalloc.c \
-	    src/pars.c \
-	    src/convert.c \
+.PHONY:			all clean fclean re
 
-INC = -I ./include/ -I ./libft/
+GRN="\033[0;32m"
+YEL="\033[0;33m"
+BLU="\033[0;34m"
+RED="\033[0;35m"
+NC="\033[0m"
 
-LIB = libft/libft.a
-LIB_PATH = libft/
-#LIB = ft_printf/libftprintf.a
-#LIB_PATH = ft_printf/
+ASM_PATH	= 		./asm_dir
 
-OBJ = $(SRC:.c=.o)
+VM_PATH 	=		./corewar_dir
 
-FLAG =# -Wall -Wextra -Werror
 
-CC = gcc
+ASM		 	= 		./asm_dir/asm
 
-all: $(NAME)
+VM		 	= 		./corewar_dir/corewar
 
-$(NAME): $(OBJ)
-	@make -C $(LIB_PATH)
-	@$(CC) $(FLAG) -o $(NAME) $(OBJ) $(LIB) $(INC)
-	@echo "asm created"
+LOCAL_ASM	= ./asm
 
-%.o: %.c
-	@$(CC) $(FLAG) $(INC) -o $@ -c $<
+LOCAL_VM	= ./corewar
+
+PRINT		= echo
+
+all: asm corewar
+
+asm:
+	@make -C $(ASM_PATH)
+	@ln -sf $(ASM) $(LOCAL_ASM)
+	@$(PRINT) $(GRN) "[ln -sf] asm"  $(NC)
+
+corewar:
+	@make -C $(VM_PATH)
+	@ln -sf $(VM) $(LOCAL_VM)
+	@$(PRINT) $(GRN) "[ln -sf] VM" $(NC)
 
 clean:
-	@rm -f $(OBJ)
-	@make clean -C $(LIB_PATH)
-	@echo "asm cleaned"
+	@make -C $(ASM_PATH) clean
+	@make -C $(VM_PATH)	clean
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "asm deleted"
+fclean:
+	@make -C $(ASM_PATH) fclean
+	@make -C $(VM_PATH)	fclean
+	@rm -f $(LOCAL_ASM)
+	@rm -f $(LOCAL_VM)
 
 re: fclean all
-
-.PHONY: clean fclean re all
