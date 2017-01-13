@@ -15,6 +15,6 @@ team:
 
       Raphael Baum, github.com/Sequoya42/
       
-      Karim Bensadoune
+      Karim Bensadoune, github.com/kbensado
       
       Nicolas Borrelly
